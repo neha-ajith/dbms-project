@@ -32,8 +32,25 @@ class Operation extends JFrame{
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
+					customer cu=new customer();
+                    cu.setVisible(true);
+                    dispose();
+				}
+			});
+            b2.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
 					System.out.println("Button clicked.");
-					
+					customerdlt cudlt=new customerdlt();
+                    cudlt.setVisible(true);
+                    dispose();
+				}
+			});
+            b3.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					System.out.println("Button clicked.");
+					customerupd cuupd=new customerupd();
+                    cuupd.setVisible(true);
+                    dispose();
 				}
 			});
 		}

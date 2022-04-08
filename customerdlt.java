@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 class customerdlt extends JFrame{
 		JLabel l1,l2;
 		JTextField t1;
-		JButton b1;
+		JButton b1,b2;
 		customerdlt(){
 			Font f=new Font("Arial",Font.BOLD,24);
 			l1=new JLabel("Customer");
@@ -13,14 +13,17 @@ class customerdlt extends JFrame{
 			l2=new JLabel("CID");
 			t1=new JTextField();
 			b1=new JButton("Delete");
+			b2=new JButton("Back");
 			l1.setBounds(70,40,200,40);
 			l2.setBounds(70,100,100,20);//UserName Label
 			t1.setBounds(70,120,200,30);//TextField 
-			b1.setBounds(170,170,100,30);
+			b1.setBounds(180,170,100,30);
+			b2.setBounds(60,170,100,30);
 			add(l1);
 			add(l2);
 			add(t1);
 			add(b1);
+			add(b2);
 			setLayout(null);
 			setVisible(true);
 			setSize(400,400);
@@ -28,6 +31,13 @@ class customerdlt extends JFrame{
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
 					System.out.println(t1.getText());
+				}
+			});
+			b2.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					Operation op = new Operation();
+					op.setVisible(true);
+					dispose();
 				}
 			});
 		}

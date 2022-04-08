@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 class customer extends JFrame{
 		JLabel l1,l2,l3,l4,l5,l6;
 		JTextField t1,t2,t3,t4,t5;
-		JButton b1;
+		JButton b1,b2;
 		customer(){
 			Font f=new Font("Arial",Font.BOLD,24);
 			l1=new JLabel("Customer");
@@ -21,6 +21,7 @@ class customer extends JFrame{
 			l6=new JLabel("CustomerHID");
 			t5=new JTextField();
 			b1=new JButton("OK");
+			b2=new JButton("Back");
 			l1.setBounds(70,40,200,40);
 			l2.setBounds(70,100,100,20);//UserName Label
 			t1.setBounds(70,120,200,30);//TextField 
@@ -32,7 +33,8 @@ class customer extends JFrame{
 			t4.setBounds(70,330,200,30);
 			l6.setBounds(70,380,100,20);
 			t5.setBounds(70,400,200,30);
-			b1.setBounds(170,450,100,30);
+			b1.setBounds(180,450,100,30);
+			b2.setBounds(60,450,100,30);
 			add(l1);
 			add(l2);
 			add(t1);
@@ -45,13 +47,21 @@ class customer extends JFrame{
 			add(l6);
 			add(t5);
 			add(b1);
+			add(b2);
 			setLayout(null);
 			setVisible(true);
-			setSize(400,400);
+			setSize(400,700);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
 					System.out.println(t1.getText());
+				}
+			});
+			b2.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					Operation op = new Operation();
+					op.setVisible(true);
+					dispose();
 				}
 			});
 		}
