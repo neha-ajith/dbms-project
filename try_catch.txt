@@ -1,0 +1,53 @@
+try
+					{
+						int rowsUpdated;
+						Class.forName("oracle.jdbc.OracleDriver"); 
+						Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + DatabaseInfo.SID, User.name, User.password); 
+						Statement stmt = con.createStatement();
+						try
+						{
+							try
+							{
+								PreparedStatement prepStmt = con.prepareStatement("INSERT INTO Employee (UserName, Pwd) VALUES (?, ?)");
+								prepStmt.setString(1, t1.getText()); 
+								prepStmt.setString(2, t2.getText()); 
+			
+								rowsUpdated = prepStmt.executeUpdate();
+								if(rowsUpdated > 0)
+									System.out.println("Successfully inserted " + rowsUpdated + " row(s)");
+								else
+									System.out.println("Failed to insert to table");
+			
+								prepStmt.close();
+							}
+							catch(SQLException sqle)
+							{
+								System.out.println(sqle);
+								System.out.println("Failed to perform Insert using prepared statement");
+							}
+
+							ResultSet resSet = stmt.executeQuery("SELECT * FROM Employee");
+							System.out.println("Details of Employees are:");
+							while(resSet.next())
+							{
+								System.out.println("Username: " + resSet.getString("UserName")); // Can specify column number instead of name. Numbering starts from 1
+								System.out.println("Password: " + resSet.getString("Pwd"));
+							}	
+						}
+						catch (SQLException sqle)
+						{
+							System.out.println(sqle);
+							System.out.println("Failed to execute SELECT * query");
+						}
+						stmt.close();
+						con.close();
+					}
+					catch(ClassNotFoundException cnfe)
+					{
+						System.out.println(cnfe);
+						System.out.println("Failed to load driver");
+					}
+					catch(SQLException sqle)
+					{
+						System.out.println(sqle);
+					}

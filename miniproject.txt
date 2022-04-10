@@ -1,0 +1,11 @@
+1. create table hotel(hid char(3),hname varchar(15),hemail varchar(20),hphno number);
+insert into hotel values('&hid','&hname','&hemail',&hphno);
+
+2. create table location(hloc varchar(15),hid char(3));
+insert into location values('&hloc','&hid');
+
+3. create table room(rid char(3),rcid char(3),rhid char(3),pid char(3),pamount number,bid char(3));
+
+4. create table customer(cid char(3),cname varchar(15),cemail varchar(20),cphno number,chid char(3));
+
+5. create sequence seq_cid start with 1 increment by 1;

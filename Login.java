@@ -40,6 +40,6 @@ class Login extends JFrame{
 			});
 		}
 	public static void main(String[] args){
-		Operation login=new Operation();
+		welcome login=new welcome();
 	}
 }

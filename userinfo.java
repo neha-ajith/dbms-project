@@ -1,3 +1,5 @@
+import java.sql.*;
+
 class User
 {
     public static final String name = "username"; // SQL+ username

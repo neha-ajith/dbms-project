@@ -112,6 +112,7 @@ class Main
                 try
                 {
                     rowsUpdated = stmt.executeUpdate("UPDATE Employee SET DepNo = 3 WHERE ID = 4");
+                    
                     if(rowsUpdated > 0)
                         System.out.println("Successfully updated " + rowsUpdated + " row(s)");
                     else

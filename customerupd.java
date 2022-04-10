@@ -59,7 +59,7 @@ class customerupd extends JFrame{
 			});
 			b2.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
-					Operation op = new Operation();
+					operationcus op = new operationcus();
 					op.setVisible(true);
 					dispose();
 				}

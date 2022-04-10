@@ -2,12 +2,12 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-class Operation extends JFrame{
+class operationcus extends JFrame{
 		JLabel l1,l2,l3;
 		JTextField t1;
 		JPasswordField t2;
 		JButton b1,b2,b3;
-		Operation(){
+		operationcus(){
 			Font f=new Font("Arial",Font.BOLD,20);
 			l1=new JLabel("Welcome!");
             l2 = new JLabel("Choose operation.");
@@ -55,6 +55,6 @@ class Operation extends JFrame{
 			});
 		}
 	public static void main(String[] args){
-		Operation op=new Operation();
+		operationcus op = new operationcus();
 	}
 }

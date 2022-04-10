@@ -41,7 +41,7 @@ class hotelupd extends JFrame{
 			add(b1);
 			setLayout(null);
 			setVisible(true);
-			setSize(400,400);
+			setSize(400,700);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
