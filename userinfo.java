@@ -1,9 +1,7 @@
-import java.sql.*;
-
 class User
 {
-    public static final String name = "username"; // SQL+ username
-    public static final String password = "password"; // SQL+ password
+    public static final String name = "nea"; // SQL+ username
+    public static final String password = "test"; // SQL+ password
 }
 
 class DatabaseInfo

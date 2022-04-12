@@ -45,7 +45,8 @@ class hotelupd extends JFrame{
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
-					System.out.println(t1.getText());
+					JOptionPane.showMessageDialog(t4, "The updated row is \nHID = "+t1.getText()+"\nHname = "+t2.getText()+
+													"\nHemail = "+t3.getText()+"\nHphno = "+t4.getText());
 				}
 			});
 		}

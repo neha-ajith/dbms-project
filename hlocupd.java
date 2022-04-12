@@ -37,7 +37,7 @@ class hlocupd extends JFrame{
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
-					System.out.println(t1.getText());
+					JOptionPane.showMessageDialog(t1, "The updated row is \nHLoc = "+t1.getText()+"\nHID = "+t2.getText());
 				}
 			});
 		}

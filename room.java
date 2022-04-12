@@ -2,30 +2,28 @@ import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.*;
+
 class room extends JFrame{
-		JLabel l1,l2,l3,l4,l5,l6,l7,l8,l9;
-		JTextField t1,t2,t3,t4,t5,t6,t7,t8;
+		JLabel l1,l2,l3,l4,l5,l6,l7;
+		JTextField t1,t2,t3,t4,t5,t6;
 		JButton b1;
 		room(){
 			Font f=new Font("Arial",Font.BOLD,24);
 			l1=new JLabel("Room");
 			l1.setFont(f);
-			l2=new JLabel("Roomno");
+			l2=new JLabel("RID");
 			t1=new JTextField();
-			l3=new JLabel("Roomtype");
+			l3=new JLabel("RCID");
 			t2=new JTextField();
-			l4=new JLabel("Rent");
+			l4=new JLabel("RHID");
 			t3=new JTextField();
-			l5=new JLabel("RCID");
+			l5=new JLabel("PID");
 			t4=new JTextField();
-			l6=new JLabel("RHID");
+			l6=new JLabel("PAmount");
 			t5=new JTextField();
-            l7=new JLabel("PID");
+            l7=new JLabel("BID");
 			t6=new JTextField();
-            l8=new JLabel("Pamount");
-			t7=new JTextField();
-            l9=new JLabel("BId");
-			t8=new JTextField();
 			b1=new JButton("OK");
 			l1.setBounds(70,40,200,40);
 			l2.setBounds(70,100,100,20);//UserName Label
@@ -40,11 +38,7 @@ class room extends JFrame{
 			t5.setBounds(70,400,200,30);
             l7.setBounds(70,450,100,20);
 			t6.setBounds(70,470,200,30);
-            l8.setBounds(70,520,100,20);
-			t7.setBounds(70,540,200,30);
-            l9.setBounds(70,590,100,20);
-			t8.setBounds(70,610,200,30);
-			b1.setBounds(170,660,100,30);
+			b1.setBounds(170,520,100,30);
 			add(l1);
 			add(l2);
 			add(t1);
@@ -58,18 +52,47 @@ class room extends JFrame{
 			add(t5);
             add(l7);
 			add(t6);
-            add(l8);
-			add(t7);
-            add(l9);
-			add(t8);
 			add(b1);
 			setLayout(null);
 			setVisible(true);
-			setSize(400,800);
+			setSize(400,700);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			b1.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
-					System.out.println(t1.getText());
+					JOptionPane.showMessageDialog(t6, "The inserted row is \nRID = "+t1.getText()+"\nRCID = "+t2.getText()+
+													"\nRHID = "+t3.getText()+"\nPID = "+t4.getText()+"\nPAmount = "+t5.getText()+"\nBID = "+t6.getText());
+					try {
+						int rowsUpdated;
+						Class.forName("oracle.jdbc.OracleDriver");
+						Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:" + DatabaseInfo.SID,
+								User.name, User.password);
+						try {
+							PreparedStatement prepStmt = con.prepareStatement(
+									"INSERT INTO room (rid,rcid,rhid,pid,pamount,bid) VALUES (?,?,?,?,?,?)");
+							prepStmt.setString(1, t1.getText());
+							prepStmt.setString(2, t2.getText());
+							prepStmt.setString(3, t3.getText());
+							prepStmt.setString(4, t4.getText());
+							prepStmt.setString(5, t5.getText());
+							prepStmt.setString(6, t6.getText());
+							rowsUpdated = prepStmt.executeUpdate();
+							if (rowsUpdated > 0)
+								System.out.println("Successfully inserted " + rowsUpdated + " row(s)");
+							else
+								System.out.println("Failed to insert to table");
+	
+							prepStmt.close();
+						} catch (SQLException sqle) {
+							System.out.println(sqle);
+							System.out.println("Failed to perform Insert using prepared statement");
+						}
+	
+					} catch (ClassNotFoundException cnfe) {
+						System.out.println(cnfe);
+						System.out.println("Failed to load driver");
+					} catch (SQLException sqle) {
+						System.out.println(sqle);
+					}
 				}
 			});
 		}
